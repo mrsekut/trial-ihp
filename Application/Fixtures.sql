@@ -12,3 +12,13 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 
+SET SESSION AUTHORIZATION DEFAULT;
+
+ALTER TABLE public.posts DISABLE TRIGGER ALL;
+
+INSERT INTO public.posts (id, title, body) VALUES ('cbc4050c-a5f7-4b4e-a8af-1c562521e511', 'IHPを使ってみた', 'かなり凄い。簡単Haskell');
+
+
+ALTER TABLE public.posts ENABLE TRIGGER ALL;
+
+

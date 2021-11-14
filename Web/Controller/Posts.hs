@@ -8,7 +8,9 @@ import           Web.View.Posts.Show    (ShowView (ShowView, post))
 
 instance Controller PostsController where
     action PostsAction = do
-        posts <- query @Post |> fetch
+        posts <- query @Post
+            |> orderByDesc #createdAt
+            |> fetch
         render IndexView { .. }
 
     action NewPostAction = do
