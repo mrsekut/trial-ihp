@@ -16,9 +16,21 @@ SET SESSION AUTHORIZATION DEFAULT;
 
 ALTER TABLE public.posts DISABLE TRIGGER ALL;
 
-INSERT INTO public.posts (id, title, body) VALUES ('cbc4050c-a5f7-4b4e-a8af-1c562521e511', 'IHPを使ってみた', 'かなり凄い。簡単Haskell');
+INSERT INTO public.posts (id, title, body, created_at) VALUES ('cbc4050c-a5f7-4b4e-a8af-1c562521e511', 'IHPを使ってみた', '#### かなり凄い
+
+
+簡単Haskell 
+
+', '2021-11-14 16:05:31.194682+09');
 
 
 ALTER TABLE public.posts ENABLE TRIGGER ALL;
+
+
+ALTER TABLE public.comments DISABLE TRIGGER ALL;
+
+
+
+ALTER TABLE public.comments ENABLE TRIGGER ALL;
 
 

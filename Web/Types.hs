@@ -1,8 +1,8 @@
 module Web.Types where
 
-import IHP.Prelude
-import IHP.ModelSupport
-import Generated.Types
+import           Generated.Types
+import           IHP.ModelSupport
+import           IHP.Prelude
 
 data WebApplication = WebApplication deriving (Eq, Show)
 
@@ -17,4 +17,14 @@ data PostsController
     | EditPostAction { postId :: !(Id Post) }
     | UpdatePostAction { postId :: !(Id Post) }
     | DeletePostAction { postId :: !(Id Post) }
+    deriving (Eq, Show, Data)
+
+data CommentsController
+    = CommentsAction
+    | NewCommentAction { postId :: !(Id Post) }
+    | ShowCommentAction { commentId :: !(Id Comment) }
+    | CreateCommentAction
+    | EditCommentAction { commentId :: !(Id Comment) }
+    | UpdateCommentAction { commentId :: !(Id Comment) }
+    | DeleteCommentAction { commentId :: !(Id Comment) }
     deriving (Eq, Show, Data)

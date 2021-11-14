@@ -11,6 +11,8 @@ instance View ShowView where
         <h1>{get #title post}</h1>
         <p>{get #createdAt post |> timeAgo}</p>
         <div>{get #body post |> renderMarkdown}</div>
+
+        <a href={NewCommentAction (get #id post)}>Add Comment</a>
     |]
         where
             breadcrumb = renderBreadcrumb
