@@ -1,5 +1,6 @@
 module Web.Controller.Posts where
 
+import qualified Text.MMark             as MMark
 import           Web.Controller.Prelude
 import           Web.View.Posts.Edit    (EditView (EditView, post))
 import           Web.View.Posts.Index   (IndexView (IndexView, posts))
@@ -56,3 +57,11 @@ instance Controller PostsController where
 buildPost post = post
     |> fill @["title","body"]
     |> validateField #title nonEmpty
+    |> validateField #body nonEmpty
+    |> validateField #body isMarkdown
+
+isMarkdown :: Text -> ValidatorResult
+isMarkdown text =
+    case MMark.parse "" text of
+        Left _  -> Failure "Please provide valid Markdown"
+        Right _ -> Success
